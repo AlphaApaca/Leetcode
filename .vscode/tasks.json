@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build-current-file",
+        "type": "shell",
+        "command": "gcc",
+        "args": [
+          "-g",                   // 生成调试信息
+          "${file}",              // 当前文件
+          "-o", 
+          "${fileDirname}/bin/${fileBasenameNoExtension}", 
+          "-I${workspaceFolder}/src/utils" // 添加头文件路径
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+  }

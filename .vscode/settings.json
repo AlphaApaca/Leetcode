@@ -1,0 +1,14 @@
+{
+    "C_Cpp.default.includePath": ["${workspaceFolder}/src/utils"],
+    "files.exclude": {
+      "bin/**": true            // 隐藏编译生成的二进制文件
+    },
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true,
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+      "stdio.h": "c",
+      "linkedlist.h": "c",
+      "stdlib.h": "c"
+    }
+  }
