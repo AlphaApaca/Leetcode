@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "utils/linkedlist.h" // 引入自定义数据结构
 
 //耷拉眼一看，暴力求解
 int* twoSum_0(int* nums, int numsSize, int target, int* returnSize) {

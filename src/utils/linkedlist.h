@@ -1,25 +1,76 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-// 定义链表节点结构
-typedef struct Node {
-    int data;           // 数据域，这里以存储整数为例
-    struct Node* next;  // 指针域，指向下一个节点
-} Node;
+#include <stdio.h>
+#include <stdlib.h>
 
-// 创建新节点
-Node* createNode(int data);
+// 链表节点定义（与 LeetCode 一致）
+struct ListNode {
+    int val;
+    struct ListNode *next;
+};
 
-// 在链表头部插入节点
-Node* insertAtHead(Node* head, int data);
+/**
+ * 从整型数组创建链表
+ * @param arr 数组首地址
+ * @param size 数组长度
+ * @return 链表头节点指针
+ */
+struct ListNode* createLinkedList(int* arr, int size) {
+    if (size == 0) return NULL;
+    struct ListNode *dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    struct ListNode *current = dummy;
+    for (int i = 0; i < size; i++) {
+        current->next = (struct ListNode*)malloc(sizeof(struct ListNode));
+        current = current->next;
+        current->val = arr[i];
+        current->next = NULL;
+    }
+    struct ListNode *head = dummy->next;
+    free(dummy); // 释放虚拟头节点
+    return head;
+}
 
-// 遍历链表
-void traverseList(Node* head);
+/**
+ * 释放链表内存
+ * @param head 链表头节点指针
+ */
+void freeLinkedList(struct ListNode* head) {
+    struct ListNode *temp;
+    while (head != NULL) {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
+}
 
-// 删除指定值的节点
-Node* deleteNode(Node* head, int key);
+/**
+ * 打印链表（用于调试）
+ * @param head 链表头节点指针
+ */
+void printLinkedList(struct ListNode* head) {
+    printf("[");
+    while (head != NULL) {
+        printf("%d", head->val);
+        if (head->next != NULL) printf(", ");
+        head = head->next;
+    }
+    printf("]\n");
+}
 
-// 释放链表内存
-void freeList(Node* head);
+/**
+ * 比较两个链表是否相等（用于测试验证）
+ * @param l1 链表1头节点
+ * @param l2 链表2头节点
+ * @return 相等返回1，否则返回0
+ */
+int compareLinkedLists(struct ListNode* l1, struct ListNode* l2) {
+    while (l1 != NULL && l2 != NULL) {
+        if (l1->val != l2->val) return 0;
+        l1 = l1->next;
+        l2 = l2->next;
+    }
+    return l1 == NULL && l2 == NULL;
+}
 
-#endif
+#endif // LINKEDLIST_H
