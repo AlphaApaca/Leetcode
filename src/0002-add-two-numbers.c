@@ -60,31 +60,3 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
     //返回结果链表的头节点
     return dummy->next;
 }
-
-void traverseList(struct ListNode* head) {
-    printf("%d ", head->val);
-    head = head->next;
-    while (head != NULL) {
-        printf("-> %d ", head->val);
-        head = head->next;
-    }
-}
-
-int main() {
-    // 本地测试用例
-    int a[] = {2, 4, 3};
-    int b[] = {5, 6, 4};
-    int len1 = sizeof(a)/sizeof(a[0]);
-    int len2 = sizeof(b)/sizeof(b[0]);
-    struct ListNode* l1 = NULL;
-    struct ListNode* l2 = NULL;
-    l1 = createLinkedList(a, len1);
-    l2 = createLinkedList(b, len2);
-    struct ListNode* result = addTwoNumbers(l1, l2);
-    traverseList(result);
-    // 输出结果：7 -> 0 -> 8
-    freeLinkedList(l1);
-    freeLinkedList(l2);
-    freeLinkedList(result);
-    return 0;
-}

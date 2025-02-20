@@ -82,15 +82,3 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
     }
     return NULL;
 }
-
-
-int main() {
-    // 本地测试用例
-    int nums[] = {2, 7, 11, 15};
-    int target = 9;
-    int returnSize;
-    int* result = twoSum(nums, 4, target, &returnSize);
-    printf("Indices: [%d, %d]\n", result[0], result[1]);
-    free(result);
-    return 0;
-}

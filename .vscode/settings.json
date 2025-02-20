@@ -1,8 +1,14 @@
 {
     "C_Cpp.default.includePath": ["${workspaceFolder}/src/utils"],
-    "files.exclude": {
-      "bin/**": true            // 隐藏编译生成的二进制文件
-    },
+    // "files.exclude": {
+    //   "bin/**": true            // 隐藏编译生成的二进制文件
+    // },
+    // "code-runner.executorMap": {
+    // "c": "cd $dir && gcc -o ../bin/$fileNameWithoutExt $fileName ../src/$fileNameWithoutExt.c -I../src/utils && ../bin/$fileNameWithoutExt"
+    // },
+    //../src/${$fileNameWithoutExe%_test}.c
+    
+    "code-runner.fileDirectoryAsCwd": true,
     "code-runner.runInTerminal": true,
     "code-runner.saveFileBeforeRun": true,
     "C_Cpp.errorSquiggles": "disabled",

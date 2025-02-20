@@ -2,20 +2,22 @@
     "version": "2.0.0",
     "tasks": [
       {
-        "label": "build-current-file",
+        "label": "build-test",
         "type": "shell",
         "command": "gcc",
         "args": [
           "-g",                   // 生成调试信息
-          "${file}",              // 当前文件
-          "-o", 
-          "${fileDirname}/bin/${fileBasenameNoExtension}", 
-          "-I${workspaceFolder}/src/utils" // 添加头文件路径
+          "${file}",                  // 当前测试文件（如 tests/0001-two-sum_test.c）
+          "../src/${fileBasenameNoExtension}.c", // 对应的源码文件（如 src/0001-two-sum.c）
+          "-o",
+          "../bin/${fileBasenameNoExtension}.exe", // 输出到 bin/ 目录
+          "-I../src/utils"            // 头文件路径
         ],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        }
+        "group": "build"
+        // "group": {
+        //   "kind": "build",
+        //   "isDefault": true
+        // }
       }
     ]
   }
