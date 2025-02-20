@@ -40,3 +40,58 @@ int* p; // 声明一个整型指针变量p
 
 ## 2. 链表
 
+参考资料：
+
+[菜鸟教程-C结构体-7.用指针处理链表](https://www.runoob.com/w3cnote/c-structures-intro.html)
+
+**（1）malloc 函数**
+
+```c
+void *malloc(unsigned int size);
+```
+
+作用是在内存的动态存储区中分配一个长度为 size 的连接空间。些函数的值（即返回值）是一个指向分配空间起始地址的指针（基类型为 void）。如果些函数未能成功地执行（例如内存空间不足）则返回空指针 NULL。
+
+
+
+以 [linkedlist.h](src\utils\linkedlist.h) 中的createLinkedList函数为例：
+
+```c
+struct ListNode *dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+struct ListNode *current = dummy;
+```
+含义就是先用 malloc 函数分配一个 ListNode 结构体的内存，然后将该内存地址赋值给 dummy 指针，并将 dummy 指针赋值给 current 指针。这样 dummy 指针就指向了链表的第一个节点，current 指针则指向了当前正在处理的节点。
+
+```c
+for (int i = 0; i < size; i++) {
+        current->next = (struct ListNode*)malloc(sizeof(struct ListNode));//用 malloc 函数分配一个新的节点，并将其指针赋值给 current->next
+        current = current->next;//将 current 指针指向新的节点，然后继续处理下一个节点
+        current->val = arr[i];//为新节点赋值
+        current->next = NULL;//为新节点的 next 指针赋值为 NULL，表示这是目前的最后一个节点（如果还有，则在下一轮循环中赋值）
+    }
+```
+
+**（2）calloc 函数**
+
+```c
+void *calloc(unsigned n, unsigned size);
+```
+
+其作用是在内存的动态区存储中分配 n 个长度为 size 的连续空间。函数返回一个指向分配空间起始地址的指针，如果分配不成功，返回 NULL。 用 calloc 函数可以为一维数组开辟动态存储空间， n 为数组元素个数，每个元素长度为 size。
+
+**（3）free 函数**
+
+```c
+void free(void *p);
+```
+
+其作用是释放由 p 指向的内存区，使这部分内存区能被其它变量使用， p 是最后一次调用 calloc 或 malloc 函数时返回的值。free 函数无返回值。 请注意：以前的C版本提供的 malloc 和 calloc 函数得到的是指向字符型数据的指针。ANSI C 提供的 malloc 和 calloc 函数规定为 void * 类型。
+
+### -> 符号在C语言中的作用：
+
+一句话总结，就是" . "，但是在c语言中功能更强大，应用范围更广（因为很多时候离不了指针）
+
+1. C语言中也可以使用" . "去访问对象的attributes，但是当遇到动态分配内存创建结构体对象时就不可以了（这个时候只能得到一个指向该对象的指针）//其实还是没太懂动态分配内存的部分
+2. 函数传参传指针比把整个对象传进去效率更高
+3. 链表、树等复杂数据结构中，全是指针。
+
