@@ -95,3 +95,48 @@ void free(void *p);
 2. 函数传参传指针比把整个对象传进去效率更高
 3. 链表、树等复杂数据结构中，全是指针。
 
+## 3. 字符串
+
+初始化空字符串：
+
+```c
+char cur_str[len];
+    memset(cur_str, '\0', len);
+```
+意思是，从cur_str的起始位置开始，用'\0'填充len个字符，这样cur_str就变成了一个空字符串。
+
+strchr函数：
+
+```c
+char *strchr(const char *s, int c);
+```
+
+作用是查找字符串s中第一个出现字符c的位置（返回指向该字符的指针），如果没有找到，则返回NULL。
+
+如果要返回该字符的索引，可以使用指针减指针的方式：
+
+```c
+char* ptr = strchr(str, c);//找到重复字符的位置
+int index = ptr - str;//找到重复字符的位置
+```
+
+将字符串某个字符之前（包含这个字符）的字符删掉，后面字符随之往前移动：
+
+ [0003-length-of-longest-substring.c](src\0003-length-of-longest-substring.c) 中的内容
+
+```c
+char* ptr = strchr(cur_str, s[i]);//找到重复字符的位置
+int pos = ptr - cur_str + 1;//找到重复字符的位置（非索引，而是第X个字符）
+//将重复字符以及其前面的字符都删掉
+//先将不包含重复字符的剩余子字符串往前移动
+for(int j=pos; j<cur_len; j++) {
+    cur_str[j-pos] = cur_str[j];
+}
+//再将剩余的位置变为'\0'
+cur_len -= pos;
+memset(cur_str+cur_len, '\0', len-cur_len+1);
+//然后将新读到的字符加入下一位
+cur_str[cur_len] = s[i];
+cur_len++;
+```
+
