@@ -16,6 +16,7 @@
       "stdio.h": "c",
       "linkedlist.h": "c",
       "stdlib.h": "c",
-      "string.h": "c"
+      "string.h": "c",
+      "stdbool.h": "c"
     }
   }

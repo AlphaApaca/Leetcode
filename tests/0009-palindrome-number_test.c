@@ -34,6 +34,43 @@ void test_palindrome_number() {
         printf("Testcase 3 failed, expected output: %d, actual output: %d\n", expected3, actual3);
     }
 
+    //Testcase 4
+    int input4 = 12321;
+    int expected4 = 1;
+    int actual4 = isPalindrome(input4);
+    if (actual4 == expected4) {
+        printf("Testcase 4 passed, expected output: %d, actual output: %d\n", expected4, actual4);
+    } else {
+        printf("Testcase 4 failed, expected output: %d, actual output: %d\n", expected4, actual4);
+    }
+    //Testcase 5
+    int input5 = 123221;
+    int expected5 = 0;
+    int actual5 = isPalindrome(input5);
+    if (actual5 == expected5) {
+        printf("Testcase 5 passed, expected output: %d, actual output: %d\n", expected5, actual5);
+    } else {
+        printf("Testcase 5 failed, expected output: %d, actual output: %d\n", expected5, actual5);
+    }
+    //Testcase 6
+    int input6 = 1234554321;
+    int expected6 = 1;
+    int actual6 = isPalindrome(input6);
+    if (actual6 == expected6) {
+        printf("Testcase 6 passed, expected output: %d, actual output: %d\n", expected6, actual6);
+    } else {
+        printf("Testcase 6 failed, expected output: %d, actual output: %d\n", expected6, actual6);
+    }
+    //Testcase 7
+    int input7 = 1234554329;
+    int expected7 = 0;
+    int actual7 = isPalindrome(input7);
+    if (actual7 == expected7) {
+        printf("Testcase 7 passed, expected output: %d, actual output: %d\n", expected7, actual7);
+    } else {
+        printf("Testcase 7 failed, expected output: %d, actual output: %d\n", expected7, actual7);
+    }
+
 }
 
 int main() {
